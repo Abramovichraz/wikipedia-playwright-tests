@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  # Run CI for every push to the main branch
+  push:
+    branches: [main]
+
+  # Run CI for pull requests targeting the main branch
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-test:
+    # Use the latest Ubuntu runner
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Install the .NET 8 SDK
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      # Restore NuGet packages
+      - name: Restore dependencies
+        run: dotnet restore WikipediaPlaywrightTests/WikipediaPlaywrightTests.csproj
+
+      # Build the project without restoring again
+      - name: Build project
+        run: dotnet build WikipediaPlaywrightTests/WikipediaPlaywrightTests.csproj --no-restore --configuration Release
+
+      # Install the Playwright CLI dependencies and Chromium browser for .NET Playwright
+      - name: Install Playwright browsers
+        run: pwsh WikipediaPlaywrightTests/bin/Release/net8.0/playwright.ps1 install --with-deps chromium
+
+      # Run the NUnit test suite without rebuilding
+      - name: Run tests
+        run: dotnet test WikipediaPlaywrightTests/WikipediaPlaywrightTests.csproj --no-build --configuration Release --verbosity normal
