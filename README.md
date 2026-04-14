@@ -47,6 +47,16 @@ The framework changes the Wikipedia appearance setting:
 
 Then it validates that the page theme really changed by comparing the rendered page colors before and after the action.
 
+## Visual Validation (Dark Mode)
+
+Screenshots are captured before and after switching to Dark mode to visually validate the UI change.
+
+Before:
+![Before](artifacts/screenshots/example_before.png)
+
+After:
+![After](artifacts/screenshots/example_after.png)
+
 ## Tech stack
 
 - `.NET 8`

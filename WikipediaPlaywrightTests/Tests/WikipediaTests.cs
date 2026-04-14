@@ -59,9 +59,27 @@ public sealed class WikipediaTests : UiTestBase
         var articlePage = new WikipediaArticlePage(Page);
         await articlePage.OpenAsync();
 
+        var beforeScreenshotPath = Artifacts.GetTimestampedScreenshotPath("DarkMode_Before");
+        await Page.ScreenshotAsync(new()
+        {
+            Path = beforeScreenshotPath,
+            FullPage = true
+        });
+        TestContext.WriteLine($"Before screenshot: {beforeScreenshotPath}");
+        TestContext.AddTestAttachment(beforeScreenshotPath, "Dark mode before screenshot");
+
         var initialThemeState = await articlePage.GetThemeStateAsync();
         await articlePage.SetDarkThemeAsync();
         var updatedThemeState = await articlePage.GetThemeStateAsync();
+
+        var afterScreenshotPath = Artifacts.GetTimestampedScreenshotPath("DarkMode_After");
+        await Page.ScreenshotAsync(new()
+        {
+            Path = afterScreenshotPath,
+            FullPage = true
+        });
+        TestContext.WriteLine($"After screenshot: {afterScreenshotPath}");
+        TestContext.AddTestAttachment(afterScreenshotPath, "Dark mode after screenshot");
 
         TestContext.WriteLine($"Initial theme state: {initialThemeState}");
         TestContext.WriteLine($"Updated theme state: {updatedThemeState}");

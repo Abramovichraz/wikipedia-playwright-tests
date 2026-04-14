@@ -25,4 +25,10 @@ public static class Artifacts
         Directory.CreateDirectory(Path.GetDirectoryName(fullPath)!);
         return fullPath;
     }
+
+    public static string GetTimestampedScreenshotPath(string baseFileName)
+    {
+        var timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+        return GetFilePath(Path.Combine("screenshots", $"{baseFileName}_{timestamp}.png"));
+    }
 }
