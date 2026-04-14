@@ -48,28 +48,33 @@ Then it validates that the page theme really changed by comparing the rendered p
 ## Solution structure
 
 ```text
-WikipediaPlaywrightTests.sln
-README.md
-WikipediaPlaywrightTests/
-  Clients/
-    WikipediaApiClient.cs
-  Infrastructure/
-    Artifacts.cs
-    SimpleHtmlReport.cs
-    TestResultRecord.cs
-    TestSettings.cs
-    UiTestBase.cs
-  Models/
-    SectionWordCountResult.cs
-    ThemeState.cs
-  Pages/
-    WikipediaArticlePage.cs
-  Tests/
-    WikipediaTests.cs
-  Utilities/
-    ColorParser.cs
-    TextNormalizer.cs
-  WikipediaPlaywrightTests.csproj
+genpact_test/
+├── .gitignore
+├── README.md
+├── WikipediaPlaywrightTests.sln
+├── artifacts/
+│   ├── report.html
+│   └── screenshots/
+├── WikipediaPlaywrightTests/
+│   ├── Clients/
+│   │   └── WikipediaApiClient.cs
+│   ├── Infrastructure/
+│   │   ├── Artifacts.cs
+│   │   ├── SimpleHtmlReport.cs
+│   │   ├── TestResultRecord.cs
+│   │   ├── TestSettings.cs
+│   │   └── UiTestBase.cs
+│   ├── Models/
+│   │   ├── SectionWordCountResult.cs
+│   │   └── ThemeState.cs
+│   ├── Pages/
+│   │   └── WikipediaArticlePage.cs
+│   ├── Tests/
+│   │   └── WikipediaTests.cs
+│   ├── Utilities/
+│   │   ├── ColorParser.cs
+│   │   └── TextNormalizer.cs
+│   └── WikipediaPlaywrightTests.csproj
 ```
 
 ## Architecture
