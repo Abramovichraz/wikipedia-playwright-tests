@@ -1,5 +1,15 @@
 # Wikipedia Playwright Test Framework
 
+## Test Results (Latest Run)
+
+- ✅ **Task 1 Passed**: UI and MediaWiki API extraction of `Debugging features` produced matching normalized unique word counts.
+- ✅ **Task 3 Passed**: `Color (beta)` was switched to `Dark`, and the rendered theme change was successfully validated.
+- ⚠️ **Task 2 Partially Passed**: `8/9` technology-name link checks passed under `Microsoft development tools` -> `Testing and debugging`.
+- ⚠️ **Single failing case**: `TestingAndDebuggingItemShouldBeALink("Playwright")`
+- ⚠️ **Reason**: On the live Wikipedia page, `Playwright` is currently rendered as a self-link without a standard `href` hyperlink.
+- ✅ **Assessment**: The failure reflects a real data inconsistency on the live site, not a defect in the automation code.
+- ⚠️ **Live site dependency**: This suite validates a live Wikipedia page, so page content and markup may change over time and affect future results.
+
 Lightweight UI + API automation framework built in `C#` with `Playwright` and `NUnit`.
 
 The project validates selected behavior on the Wikipedia page for Playwright software:
